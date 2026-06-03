@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ghost Battles</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+
+<!-- AGE GATE -->
+<div class="screen active" id="ageGate">
+  <div class="card glass">
+    <div class="badge glow-text">RESTRICTED • 21+</div>
+    <h1 class="glow-title">ADULTS ONLY</h1>
+    <p>Live video experience. By entering, you affirm you are at least 21 years old.</p>
+    <button class="btn glow-btn" onclick="enterApp()">ENTER PLATFORM</button>
+    <button class="btn secondary" onclick="deny()">EXIT</button>
+  </div>
+</div>
+
+<!-- LOBBY -->
+<div class="screen" id="lobby">
+  <div class="card glass">
+    <div class="badge glow-text">LOBBY</div>
+    <h1 class="glow-title">READY?</h1>
+    <p>Find a random stranger for a live video battle.</p>
+    <button class="btn glow-btn" onclick="findUser()">FIND SOMEONE</button>
+  </div>
+</div>
+
+<!-- MATCHING -->
+<div class="screen" id="search">
+  <div class="search glass">
+    <div class="pulse"></div>
+    <h2 class="glow-title">Finding someone...</h2>
+    <p>Connecting you to a random user</p>
+    <button class="btn secondary small" style="margin-top:24px" onclick="cancelSearch()">Cancel</button>
+  </div>
+</div>
+
+<!-- CHAT -->
+<div class="screen" id="chat">
+  <div class="layout">
+    <div class="videoGrid">
+      <div class="videoBox glass">
+        <div class="label glow-text">YOU</div>
+        <video id="localVideo" autoplay playsinline muted></video>
+      </div>
+      <div class="videoBox glass remote">
+        <div class="label glow-text">STRANGER</div>
+        <video id="remoteVideo" autoplay playsinline></video>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="btn glow-btn small" onclick="nextUser()">Next</button>
+      <button class="btn secondary small" onclick="disconnect()">Disconnect</button>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
